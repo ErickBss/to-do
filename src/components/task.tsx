@@ -31,7 +31,7 @@ export function Task({
 				{task.completed && <Feather name="check" color="#F2F2F2" size={12} />}
 			</TouchableOpacity>
 			<Text
-				className={`text-base w-[260] ${
+				className={`text-base flex-1 mx-4 ${
 					task.completed ? 'text-g-300 line-through' : 'text-g-100'
 				}`}
 			>
