@@ -1,4 +1,10 @@
-import { Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+	FlatList,
+	Text,
+	TextInput,
+	TouchableOpacity,
+	View,
+} from 'react-native';
 import { Header } from '../../components/header';
 import { EmptyList } from '../../components/emptyList';
 import { Task } from '../../components/task';
@@ -34,15 +40,15 @@ export function Home() {
 				</View>
 			</View>
 
-			<View className="p-4">
-				{tasks.length ? (
-					tasks.map((task) => (
-						<Task key={task.id} task={task} setTask={setTask} />
-					))
-				) : (
-					<EmptyList />
+			<FlatList
+				className="p-4"
+				data={tasks}
+				showsVerticalScrollIndicator={false}
+				ListEmptyComponent={() => <EmptyList />}
+				renderItem={({ item }) => (
+					<Task key={item.id} task={item} setTask={setTask} />
 				)}
-			</View>
+			/>
 		</>
 	);
 }
